@@ -11,7 +11,7 @@ import Alamofire
 
 class ViewController: UIViewController {
     
-  var serverURL : String = "http://9e6cb053.ngrok.io/register"
+  var serverURL : String = "http://YOUR_WEB_APP/register"
 
   @IBOutlet var registerButton: UIButton!
   @IBOutlet var identityField: UITextField!
