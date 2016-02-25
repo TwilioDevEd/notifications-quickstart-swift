@@ -49,7 +49,7 @@ can go ahead and open 'notifications.xcworkspace'.
 
 In the ViewController file, on this line,
 
-  var serverURL : String = "http://YOUR_WEB_APP/register"
+    var serverURL : String = "http://YOUR_WEB_APP/register"
 
 Replace the URL with the address of your server. The app uses 4 credentials to register your device for notifications.
 
