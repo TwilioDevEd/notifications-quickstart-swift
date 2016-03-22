@@ -14,13 +14,7 @@ Twilio Notification_Service SID | Use the create_service.js script to generate t
 
 You can download the Node notifications web app from [here](https://github.com/TwilioDevEd/notifications-quickstart-node).
 ##Setting up the web app
-Create a configuration file for your application:
-
-```bash
-cp .env.example .env
-```
-
-Edit `.env` with the four configuration parameters we gathered from above.
+Edit `config.json` with the four configuration parameters we gathered from above.
 
 Next, we need to install our dependencies from npm:
 
