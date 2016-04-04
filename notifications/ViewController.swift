@@ -40,10 +40,8 @@ class ViewController: UIViewController {
                                                  "BindingType" : "apn",
                                                      "Address" : deviceToken])
             .responseJSON { response in
-              let result = NSString(data: response.data!, encoding: NSUTF8StringEncoding)
-              if result != "Success" {
-                print("Error: registration not successful")
-              }
+              print(response)
+            }
         }
     }
 }
