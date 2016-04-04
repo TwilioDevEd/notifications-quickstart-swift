@@ -42,7 +42,7 @@ class ViewController: UIViewController {
             .responseJSON { response in
               print(response)
             }
-        }
-    }
+  }
+    
 }
 
