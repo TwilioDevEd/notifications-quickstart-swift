@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="NotifySwiftQuickstart" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="twilio_logo_red" translatesAutoresizingMaskIntoConstraints="NO" id="FjQ-cv-ucQ" userLabel="Twilio Logo">
+                                <rect key="frame" x="200" y="60" width="200" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="AgR-JD-1n2"/>
+                                    <constraint firstAttribute="width" constant="200" id="WNP-2k-wW3"/>
+                                </constraints>
+                            </imageView>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Identity" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="M0Y-dD-JDm">
+                                <rect key="frame" x="193" y="145" width="214" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="214" id="AfL-rh-hE2"/>
+                                    <constraint firstAttribute="height" constant="30" id="e6n-y5-neU"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xU9-GX-UaX">
+                                <rect key="frame" x="193" y="183" width="214" height="44"/>
+                                <color key="backgroundColor" red="0.89411764709999997" green="0.2470588235" blue="0.2470588235" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="ryB-jx-2Qv"/>
+                                </constraints>
+                                <state key="normal" title="Register">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="didTapRegister:" destination="BYZ-38-t0r" eventType="touchUpInside" id="vGI-wa-2Kv"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="M0Y-dD-JDm" firstAttribute="top" secondItem="FjQ-cv-ucQ" secondAttribute="bottom" constant="25" id="Slj-Bb-e6v"/>
+                            <constraint firstItem="xU9-GX-UaX" firstAttribute="trailing" secondItem="M0Y-dD-JDm" secondAttribute="trailing" id="Ug1-AV-atd"/>
+                            <constraint firstItem="xU9-GX-UaX" firstAttribute="top" secondItem="M0Y-dD-JDm" secondAttribute="bottom" constant="8" id="XMA-sl-Op5"/>
+                            <constraint firstItem="FjQ-cv-ucQ" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="XfF-lC-8o4"/>
+                            <constraint firstItem="M0Y-dD-JDm" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="cqn-ev-8b5"/>
+                            <constraint firstItem="xU9-GX-UaX" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="fPH-2B-W9i"/>
+                            <constraint firstItem="xU9-GX-UaX" firstAttribute="leading" secondItem="M0Y-dD-JDm" secondAttribute="leading" id="fYY-lH-xe7"/>
+                            <constraint firstItem="FjQ-cv-ucQ" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="40" id="z3h-bt-CQp"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="identityField" destination="M0Y-dD-JDm" id="eqJ-6P-k09"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="twilio_logo_red" width="400" height="121"/>
+    </resources>
+</document>
