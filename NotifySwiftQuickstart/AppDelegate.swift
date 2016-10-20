@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import UserNotifications
+
 
 @UIApplicationMain
 
@@ -17,9 +19,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   
   func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
     // Override point for customization after application launch.
-    let settings = UIUserNotificationSettings(types: .alert, categories: nil)
-    UIApplication.shared.registerUserNotificationSettings(settings)
-    UIApplication.shared.registerForRemoteNotifications()
+    if #available(iOS 10, *) {
+        let center = UNUserNotificationCenter.current()
+        center.requestAuthorization(options: [.alert], completionHandler: { (granted, error) in
+            UIApplication.shared.registerForRemoteNotifications()
+        })
+    } else {
+        let settings = UIUserNotificationSettings(types: .alert, categories: nil)
+        UIApplication.shared.registerUserNotificationSettings(settings)
+        UIApplication.shared.registerForRemoteNotifications()
+    }
+
     return true
   }
   
