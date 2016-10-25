@@ -3,7 +3,7 @@
 Twilio Notifications starter iOS application in Swift
 
 This application should give you a ready-made starting point for writing your
-own notification-integrated apps with Twilio Notifications. Before we begin, you need to collected the credentials to run the notifications web app. 
+own notification-integrated apps with Twilio Notify. Before we begin, you need to collected the credentials to run the notifications web app. 
 
 Credential | Description
 ---------- | -----------
@@ -34,7 +34,9 @@ You'll need to test this on the device, since the iOS simulator can't receive no
 
 ## Setting Up The iOS App
 
-In the ViewController file, on this line,
+To receive push notifications on your device, you will need to have an app ID registered with your Apple account. Change the Bundle Identifier from `com.twilio.notify.NotifySwiftQuickstart` to match your new App ID. You'll need to create APN push credentials for that app ID - for more, see the [Push Notifications for iOS Guide](https://www.twilio.com/docs/api/ip-messaging/guides/push-notifications-ios).
+
+In the ViewController.swift file, on this line,
 
     var serverURL : String = "http://YOUR_SERVER_HERE/register"
 

@@ -15,6 +15,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2806378F1DB920E900AEF760 /* NotifySwiftQuickstart.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = NotifySwiftQuickstart.entitlements; sourceTree = "<group>"; };
 		28BF8C421CEF4B2700CB7B5A /* NotifySwiftQuickstart.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NotifySwiftQuickstart.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		28BF8C451CEF4B2700CB7B5A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		28BF8C471CEF4B2700CB7B5A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -54,6 +55,7 @@
 		28BF8C441CEF4B2700CB7B5A /* NotifySwiftQuickstart */ = {
 			isa = PBXGroup;
 			children = (
+				2806378F1DB920E900AEF760 /* NotifySwiftQuickstart.entitlements */,
 				28BF8C451CEF4B2700CB7B5A /* AppDelegate.swift */,
 				28BF8C471CEF4B2700CB7B5A /* ViewController.swift */,
 				28BF8C491CEF4B2700CB7B5A /* Main.storyboard */,
@@ -96,6 +98,12 @@
 				TargetAttributes = {
 					28BF8C411CEF4B2700CB7B5A = {
 						CreatedOnToolsVersion = 7.3.1;
+						LastSwiftMigration = 0800;
+						SystemCapabilities = {
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -251,11 +259,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = NotifySwiftQuickstart/NotifySwiftQuickstart.entitlements;
 				INFOPLIST_FILE = NotifySwiftQuickstart/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.twilio.notify.NotifySwiftQuickstart;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -263,11 +273,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = NotifySwiftQuickstart/NotifySwiftQuickstart.entitlements;
 				INFOPLIST_FILE = NotifySwiftQuickstart/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.twilio.notify.NotifySwiftQuickstart;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
@@ -290,6 +302,7 @@
 				28BF8C561CEF4B2700CB7B5A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

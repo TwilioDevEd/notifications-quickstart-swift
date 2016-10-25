@@ -25,11 +25,11 @@ class ViewController: UIViewController {
     // Dispose of any resources that can be recreated.
   }
   
-  @IBAction func didTapRegister(sender: UIButton) {
+  @IBAction func didTapRegister(_ sender: UIButton) {
     if (TARGET_OS_SIMULATOR == 1) {
       displayError("Unfortunately, push notifications don't work on the Simulator")
     } else {
-      let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+      let appDelegate = UIApplication.shared.delegate as! AppDelegate
       let deviceToken : String! = appDelegate.devToken
       let identity : String! = self.identityField.text
       registerDevice(identity, deviceToken: deviceToken)
@@ -37,21 +37,21 @@ class ViewController: UIViewController {
     }
   }
   
-  func displayError(errorMessage:String) {
-    let alertController = UIAlertController(title: "Error", message: errorMessage, preferredStyle: .Alert)
-    let okAction = UIAlertAction(title: "OK", style: .Default, handler: nil)
+  func displayError(_ errorMessage:String) {
+    let alertController = UIAlertController(title: "Error", message: errorMessage, preferredStyle: .alert)
+    let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
     alertController.addAction(okAction)
-    presentViewController(alertController, animated: true, completion: nil)
+    present(alertController, animated: true, completion: nil)
   }
   
-  func registerDevice(identity: String, deviceToken: String) {
+  func registerDevice(_ identity: String, deviceToken: String) {
     
     // Create a POST request to the /register endpoint with device variables to register for Twilio Notifications
-    let session = NSURLSession.sharedSession()
+    let session = URLSession.shared
     
-    let url = NSURL(string: serverURL)
-    let request = NSMutableURLRequest(URL: url!, cachePolicy: .UseProtocolCachePolicy, timeoutInterval: 30.0)
-    request.HTTPMethod = "POST"
+    let url = URL(string: serverURL)
+    var request = URLRequest(url: url!, cachePolicy: .useProtocolCachePolicy, timeoutInterval: 30.0)
+    request.httpMethod = "POST"
     
     request.addValue("application/json", forHTTPHeaderField: "Accept")
     request.addValue("application/json", forHTTPHeaderField: "Content-Type")
@@ -61,24 +61,26 @@ class ViewController: UIViewController {
                   "BindingType" : "apn",
                   "Address" : deviceToken]
     
-    let jsonData = try! NSJSONSerialization.dataWithJSONObject(params, options: [])
-    request.HTTPBody = jsonData
+    let jsonData = try! JSONSerialization.data(withJSONObject: params, options: [])
+    request.httpBody = jsonData
     
-    let requestBody = NSString(data: jsonData, encoding: NSUTF8StringEncoding)
+    let requestBody = NSString(data: jsonData, encoding: String.Encoding.utf8.rawValue)
     print("Request Body: \(requestBody)")
     
-    let task = session.dataTaskWithRequest(request) { (responseData:NSData?, response:NSURLResponse?, error:NSError?) in
+    let task = session.dataTask(with: request, completionHandler: {
+        (responseData, response, error) in
+
       if let responseData = responseData {
-        let responseString = NSString(data: responseData, encoding: NSUTF8StringEncoding)
+        let responseString = String(data: responseData, encoding: String.Encoding.utf8)
         print("Response Body: \(responseString)")
         do {
-          let responseObject = try NSJSONSerialization.JSONObjectWithData(responseData, options: [])
+          let responseObject = try JSONSerialization.jsonObject(with: responseData, options: [])
           print("JSON: \(responseObject)")
         } catch let error {
           print("Error: \(error)")
         }
       }
-    }
+    }) 
     task.resume()
   }
   
