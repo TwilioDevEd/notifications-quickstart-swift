@@ -9,13 +9,13 @@
 import UIKit
 import UserNotifications
 
-
 @UIApplicationMain
 
 class AppDelegate: UIResponder, UIApplicationDelegate {
   
   var window: UIWindow?
   var devToken: String?
+  var environment: APNSEnvironment?
   
   func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
     // Override point for customization after application launch.
@@ -29,6 +29,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UIApplication.shared.registerUserNotificationSettings(settings)
         UIApplication.shared.registerForRemoteNotifications()
     }
+    
+    self.environment = ProvisioningProfileInspector().apnsEnvironment()
+    let envString = self.environment == APNSEnvironment.development ? "Development" : "Production"
+    print("APNS Environment detected as: \(envString) ");
 
     return true
   }
@@ -70,6 +74,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   }
   
   func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable: Any]) {
+    print("Message received.")
     if let aps = userInfo[AnyHashable("aps")] as? [AnyHashable: Any] {
         let message = aps[AnyHashable("alert")] as? String
         let alertController = UIAlertController(title: "Notification", message: message, preferredStyle: .alert)

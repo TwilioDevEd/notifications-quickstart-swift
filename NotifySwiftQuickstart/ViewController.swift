@@ -10,7 +10,8 @@ import UIKit
 
 class ViewController: UIViewController {
   
-  var serverURL : String = "http://YOUR_SERVER_HERE/register"
+  var serverURL : String = "http://3b8fb0d9.ngrok.io"
+  var path : String = "/register"
   
   @IBOutlet var registerButton: UIButton!
   @IBOutlet var identityField: UITextField!
@@ -49,17 +50,20 @@ class ViewController: UIViewController {
     // Create a POST request to the /register endpoint with device variables to register for Twilio Notifications
     let session = URLSession.shared
     
-    let url = URL(string: serverURL)
+    let url = URL(string: serverURL + path)
     var request = URLRequest(url: url!, cachePolicy: .useProtocolCachePolicy, timeoutInterval: 30.0)
     request.httpMethod = "POST"
     
     request.addValue("application/json", forHTTPHeaderField: "Accept")
     request.addValue("application/json", forHTTPHeaderField: "Content-Type")
     
+    let appDelegate = UIApplication.shared.delegate as! AppDelegate
+    
     let params = ["identity": identity,
                   "endpoint" : identity+deviceToken,
                   "BindingType" : "apn",
-                  "Address" : deviceToken]
+                  "Address" : deviceToken,
+                  "Sandbox": appDelegate.environment == APNSEnvironment.development ? "True" : "False"]
     
     let jsonData = try! JSONSerialization.data(withJSONObject: params, options: [])
     request.httpBody = jsonData
