@@ -31,7 +31,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     self.environment = ProvisioningProfileInspector().apnsEnvironment()
-    let envString = self.environment == APNSEnvironment.development ? "Development" : "Production"
+    var envString = "Unknown"
+    if environment != APNSEnvironment.unknown {
+        if environment == APNSEnvironment.development {
+            envString = "Development"
+        } else {
+            envString = "Production"
+        }
+    }
     print("APNS Environment detected as: \(envString) ");
 
     return true
