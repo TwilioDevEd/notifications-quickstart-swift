@@ -10,12 +10,14 @@ import UIKit
 
 class ViewController: UIViewController {
   
-  var serverURL : String = "http://3b8fb0d9.ngrok.io"
+  var serverURL : String = "http://8042aca0.ngrok.io"
   var path : String = "/register"
   
   @IBOutlet var registerButton: UIButton!
   @IBOutlet var identityField: UITextField!
+  @IBOutlet var messageLabel: UILabel!
   
+
   override func viewDidLoad() {
     super.viewDidLoad()
     // Do any additional setup after loading the view, typically from a nib.
@@ -27,6 +29,7 @@ class ViewController: UIViewController {
   }
   
   @IBAction func didTapRegister(_ sender: UIButton) {
+    self.messageLabel.isHidden = true
     if (TARGET_OS_SIMULATOR == 1) {
       displayError("Unfortunately, push notifications don't work on the Simulator")
     } else {
@@ -76,15 +79,30 @@ class ViewController: UIViewController {
 
       if let responseData = responseData {
         let responseString = String(data: responseData, encoding: String.Encoding.utf8)
+        
         print("Response Body: \(responseString)")
         do {
-          let responseObject = try JSONSerialization.jsonObject(with: responseData, options: [])
-          print("JSON: \(responseObject)")
+            let responseObject = try JSONSerialization.jsonObject(with: responseData, options: [])
+            if let responseDictionary = responseObject as? [String: Any] {
+                if let message = responseDictionary["message"] as? String {
+                    print("Message: \(message)")
+                    
+                    DispatchQueue.main.async() {
+                        self.messageLabel.text = message
+                        self.messageLabel.isHidden = false
+                    }
+                    
+                    
+                }
+            }
+            print("JSON: \(responseObject)")
+            
         } catch let error {
-          print("Error: \(error)")
+            print("Error: \(error)")
         }
-      }
-    }) 
+        }
+    })
+    
     task.resume()
   }
   
