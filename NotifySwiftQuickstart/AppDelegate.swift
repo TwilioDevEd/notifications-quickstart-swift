@@ -21,11 +21,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // Override point for customization after application launch.
     if #available(iOS 10, *) {
         let center = UNUserNotificationCenter.current()
-        center.requestAuthorization(options: [.alert], completionHandler: { (granted, error) in
+        center.requestAuthorization(options: [.alert, .badge, .sound], completionHandler: { (granted, error) in
             UIApplication.shared.registerForRemoteNotifications()
         })
     } else {
-        let settings = UIUserNotificationSettings(types: .alert, categories: nil)
+        let settings = UIUserNotificationSettings(types: [.alert, .badge, .sound], categories: nil)
         UIApplication.shared.registerUserNotificationSettings(settings)
         UIApplication.shared.registerForRemoteNotifications()
     }
