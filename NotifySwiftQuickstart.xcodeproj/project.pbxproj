@@ -105,7 +105,7 @@
 				TargetAttributes = {
 					28BF8C411CEF4B2700CB7B5A = {
 						CreatedOnToolsVersion = 7.3.1;
-						DevelopmentTeam = 9SS24D6XQ5;
+						DevelopmentTeam = 7HS255F6G5;
 						LastSwiftMigration = 0810;
 						SystemCapabilities = {
 							com.apple.Push = {
@@ -272,11 +272,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = NotifySwiftQuickstart/NotifySwiftQuickstart.entitlements;
-				DEVELOPMENT_TEAM = 9SS24D6XQ5;
+				DEVELOPMENT_TEAM = 7HS255F6G5;
 				INFOPLIST_FILE = NotifySwiftQuickstart/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.twilio.notify.NotifySwiftQuickstart;
+				PRODUCT_BUNDLE_IDENTIFIER = com.twilio.rtd.notify.mullerdemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "NotifySwiftQuickstart-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -290,11 +290,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = NotifySwiftQuickstart/NotifySwiftQuickstart.entitlements;
-				DEVELOPMENT_TEAM = 9SS24D6XQ5;
+				DEVELOPMENT_TEAM = 7HS255F6G5;
 				INFOPLIST_FILE = NotifySwiftQuickstart/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.twilio.notify.NotifySwiftQuickstart;
+				PRODUCT_BUNDLE_IDENTIFIER = com.twilio.rtd.notify.mullerdemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "NotifySwiftQuickstart-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;

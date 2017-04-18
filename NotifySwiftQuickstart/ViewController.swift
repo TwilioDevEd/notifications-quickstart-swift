@@ -10,7 +10,7 @@ import UIKit
 
 class ViewController: UIViewController {
   
-  var serverURL : String = "<YOUR SERVER HOST AND PORT>"
+  var serverURL : String = "https://1ecf35b8.ngrok.io"
   var path : String = "/register"
   
   @IBOutlet var registerButton: UIButton!
