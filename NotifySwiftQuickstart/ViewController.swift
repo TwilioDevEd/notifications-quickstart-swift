@@ -10,7 +10,7 @@ import UIKit
 
 class ViewController: UIViewController {
   
-  var serverURL : String = "https://1ecf35b8.ngrok.io"
+  var serverURL : String = "https://f107bbc9.ngrok.io"
   var path : String = "/register"
   
   @IBOutlet var registerButton: UIButton!
@@ -62,11 +62,25 @@ class ViewController: UIViewController {
     
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
     
-    let params = ["identity": identity,
-                  "endpoint" : identity+deviceToken,
+    var params = ["identity": identity,
                   "BindingType" : "apn",
                   "Address" : deviceToken,
                   "Sandbox": appDelegate.environment == APNSEnvironment.development ? "True" : "False"]
+    
+    var endpoint = ""
+    
+    do {
+    
+        endpoint = try KeychainAccess.readEndpoint(identity: identity)
+        params["endpoint"] = endpoint
+        
+        print("Successfully read endpoint: \(endpoint) from keychain for identity: \(identity) ")
+    } catch let error  {
+        print("Error retrieving endpoint from keychain: \(error)")
+        //endpoint = identity+deviceToken
+    }
+    
+    
     
     let jsonData = try! JSONSerialization.data(withJSONObject: params, options: [])
     request.httpBody = jsonData
@@ -91,11 +105,13 @@ class ViewController: UIViewController {
                         self.messageLabel.text = message
                         self.messageLabel.isHidden = false
                     }
-                    
-                    
                 }
+                try KeychainAccess.saveEndpoint(identity: identity, endpoint: responseDictionary["endpoint"] as! String)
+                
             }
             print("JSON: \(responseObject)")
+            
+            
             
         } catch let error {
             print("Error: \(error)")
