@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="15G1108" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_0" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -13,18 +18,11 @@
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="twilio_logo_red" translatesAutoresizingMaskIntoConstraints="NO" id="FjQ-cv-ucQ" userLabel="Twilio Logo">
-                                <rect key="frame" x="200" y="60" width="200" height="60"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="60" id="AgR-JD-1n2"/>
-                                    <constraint firstAttribute="width" constant="200" id="WNP-2k-wW3"/>
-                                </constraints>
-                            </imageView>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Identity" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="M0Y-dD-JDm">
-                                <rect key="frame" x="193" y="145" width="214" height="30"/>
+                                <rect key="frame" x="53" y="145" width="214" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="214" id="AfL-rh-hE2"/>
                                     <constraint firstAttribute="height" constant="30" id="e6n-y5-neU"/>
@@ -33,37 +31,57 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xU9-GX-UaX">
-                                <rect key="frame" x="193" y="183" width="214" height="44"/>
-                                <color key="backgroundColor" red="0.89411764709999997" green="0.2470588235" blue="0.2470588235" alpha="1" colorSpace="calibratedRGB"/>
+                                <rect key="frame" x="53" y="183" width="214" height="44"/>
+                                <color key="backgroundColor" red="0.89411764709999997" green="0.2470588235" blue="0.2470588235" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="ryB-jx-2Qv"/>
                                 </constraints>
                                 <state key="normal" title="Register">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
                                     <action selector="didTapRegister:" destination="BYZ-38-t0r" eventType="touchUpInside" id="vGI-wa-2Kv"/>
                                 </connections>
                             </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="twilio_logo_red" translatesAutoresizingMaskIntoConstraints="NO" id="FjQ-cv-ucQ" userLabel="Twilio Logo">
+                                <rect key="frame" x="60" y="61" width="200" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="AgR-JD-1n2"/>
+                                    <constraint firstAttribute="width" constant="200" id="WNP-2k-wW3"/>
+                                </constraints>
+                            </imageView>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="message" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f4q-fT-wm1">
+                                <rect key="frame" x="53" y="244" width="214" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="lessThanOrEqual" constant="220" id="WPy-mO-cuw"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="M0Y-dD-JDm" firstAttribute="top" secondItem="FjQ-cv-ucQ" secondAttribute="bottom" constant="25" id="Slj-Bb-e6v"/>
+                            <constraint firstItem="f4q-fT-wm1" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Ta7-AS-QVj"/>
                             <constraint firstItem="xU9-GX-UaX" firstAttribute="trailing" secondItem="M0Y-dD-JDm" secondAttribute="trailing" id="Ug1-AV-atd"/>
                             <constraint firstItem="xU9-GX-UaX" firstAttribute="top" secondItem="M0Y-dD-JDm" secondAttribute="bottom" constant="8" id="XMA-sl-Op5"/>
                             <constraint firstItem="FjQ-cv-ucQ" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="XfF-lC-8o4"/>
                             <constraint firstItem="M0Y-dD-JDm" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="cqn-ev-8b5"/>
                             <constraint firstItem="xU9-GX-UaX" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="fPH-2B-W9i"/>
                             <constraint firstItem="xU9-GX-UaX" firstAttribute="leading" secondItem="M0Y-dD-JDm" secondAttribute="leading" id="fYY-lH-xe7"/>
+                            <constraint firstItem="f4q-fT-wm1" firstAttribute="top" secondItem="xU9-GX-UaX" secondAttribute="bottom" constant="17" id="sta-O6-313"/>
                             <constraint firstItem="FjQ-cv-ucQ" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="40" id="z3h-bt-CQp"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="identityField" destination="M0Y-dD-JDm" id="eqJ-6P-k09"/>
+                        <outlet property="messageLabel" destination="f4q-fT-wm1" id="6AD-aj-tng"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="33.75" y="34.859154929577464"/>
         </scene>
     </scenes>
     <resources>
