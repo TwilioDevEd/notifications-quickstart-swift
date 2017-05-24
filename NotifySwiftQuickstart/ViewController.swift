@@ -64,21 +64,7 @@ class ViewController: UIViewController {
 
     var params = ["identity": identity,
                   "BindingType" : "apn",
-                  "Address" : deviceToken,
-                  "Sandbox": appDelegate.environment == APNSEnvironment.development ? "True" : "False"]
-
-    var endpoint = ""
-
-    do {
-
-        endpoint = try KeychainAccess.readEndpoint(identity: identity)
-        params["endpoint"] = endpoint
-
-        print("Successfully read endpoint: \(endpoint) from keychain for identity: \(identity) ")
-    } catch let error  {
-        print("Error retrieving endpoint from keychain: \(error)")
-        //endpoint = identity+deviceToken
-    }
+                  "Address" : deviceToken]
 
 
 
@@ -106,8 +92,6 @@ class ViewController: UIViewController {
                         self.messageLabel.isHidden = false
                     }
                 }
-                try KeychainAccess.saveEndpoint(identity: identity, endpoint: responseDictionary["endpoint"] as! String)
-
             }
             print("JSON: \(responseObject)")
 
