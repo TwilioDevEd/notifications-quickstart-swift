@@ -22,7 +22,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     if #available(iOS 10, *) {
         let center = UNUserNotificationCenter.current()
         center.requestAuthorization(options: [.alert, .badge, .sound], completionHandler: { (granted, error) in
-            UIApplication.shared.registerForRemoteNotifications()
+            DispatchQueue.main.async {
+                UIApplication.shared.registerForRemoteNotifications()
+            }
         })
     } else {
         let settings = UIUserNotificationSettings(types: [.alert, .badge, .sound], categories: nil)
