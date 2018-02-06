@@ -85,9 +85,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable: Any]) {
     print("Message received.")
     if let aps = userInfo[AnyHashable("aps")] as? [AnyHashable: Any] {
-        let alert = aps[AnyHashable("alert")] as! NSDictionary
-        let body = alert["body"] as? String
-        let title = alert["title"] as? String
+        let alert = aps[AnyHashable("alert")] != nil ? aps[AnyHashable("alert")] as! NSDictionary : [:] as NSDictionary
+        let body  = alert["body"]  != nil ? alert["body"]  as! String : ""
+        let title = alert["title"] != nil ? alert["title"] as! String : "Notification"
         let alertController = UIAlertController(title: title, message: body, preferredStyle: .alert)
         let defaultAction = UIAlertAction(title: "OK", style: .default, handler: nil)
         alertController.addAction(defaultAction)
@@ -95,4 +95,5 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
   }
 }
+
 
