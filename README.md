@@ -28,12 +28,7 @@ In the ViewController.swift file, on this line,
 
     var serverURL = "https://YOUR_DOMAIN_HERE.twil.io"
     
-Change the serverURL to match your Twilio Functions subdomain.  
- 
-## Please Note
-You'll need to test this on the device, since the iOS simulator can't receive notifications. 
-
-Once you've entered your URL, you can compile and run the app. Enter an identity in the text field that's presented. 
+Change the serverURL to match your Twilio Functions subdomain, then compile and run the app on an actual device - Apple's push notification service does not work on the Simulator. Enter an identity in the text field that's presented. 
 
 Note that user identities for Notify should not be Personally Identifiable Information (PII), such as names. 
 
