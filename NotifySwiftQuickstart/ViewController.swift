@@ -10,8 +10,8 @@ import UIKit
 
 class ViewController: UIViewController {
 
-  var serverURL = "http://YOUR_SERVER_HERE"
-  var path : String = "/register"
+  var serverURL = "https://YOUR_DOMAIN_HERE.twil.io"
+  var path = "/register-binding"
 
   @IBOutlet var registerButton: UIButton!
   @IBOutlet var identityField: UITextField!
@@ -59,20 +59,16 @@ class ViewController: UIViewController {
 
     request.addValue("application/json", forHTTPHeaderField: "Accept")
     request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-
-    let appDelegate = UIApplication.shared.delegate as! AppDelegate
-
-    var params = ["identity": identity,
+    
+    let params = ["identity": identity,
                   "BindingType" : "apn",
                   "Address" : deviceToken]
-
-
 
     let jsonData = try! JSONSerialization.data(withJSONObject: params, options: [])
     request.httpBody = jsonData
 
     let requestBody = NSString(data: jsonData, encoding: String.Encoding.utf8.rawValue)
-    print("Request Body: \(requestBody)")
+    print("Request Body: \(requestBody ?? "")")
 
     let task = session.dataTask(with: request, completionHandler: {
         (responseData, response, error) in
@@ -80,7 +76,7 @@ class ViewController: UIViewController {
       if let responseData = responseData {
         let responseString = String(data: responseData, encoding: String.Encoding.utf8)
 
-        print("Response Body: \(responseString)")
+        print("Response Body: \(responseString ?? "")")
         do {
             let responseObject = try JSONSerialization.jsonObject(with: responseData, options: [])
             if let responseDictionary = responseObject as? [String: Any] {
@@ -94,9 +90,6 @@ class ViewController: UIViewController {
                 }
             }
             print("JSON: \(responseObject)")
-
-
-
         } catch let error {
             print("Error: \(error)")
         }
@@ -105,7 +98,4 @@ class ViewController: UIViewController {
 
     task.resume()
   }
-
-
-
 }
