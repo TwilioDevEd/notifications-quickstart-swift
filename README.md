@@ -9,15 +9,15 @@ We need to get the necessary information from our Twilio account. Here's what we
 
 Config Value  | Description
 :-------------  |:-------------
-Service Instance SID | A [service](/docs/api/notifications/rest/services) instance where all the data for our application is stored and scoped. You can create one in the [console](/console/notify/services).
+Service Instance SID | A [service](https://www.twilio.com/docs/api/notifications/rest/services) instance where all the data for our application is stored and scoped. You can create one in the [console](https://www.twilio.com/console/notify/services).
 
-You will also need to create a push credential on the Twilio Console, and then configure it on your Notify service. You can [upload your push credentials here](/console/notify/credentials/create). If you haven't set up the Apple Push Notification Service (APNS) for your app, you can do so by following [the iOS push notification guide](/docs/api/notifications/guides/configuring-ios-push-notifications).
+You will also need to create a push credential on the Twilio Console, and then configure it on your Notify service. You can [upload your push credentials here](https://www.twilio.com/console/notify/credentials/create). If you haven't set up the Apple Push Notification Service (APNS) for your app, you can do so by following [the iOS push notification guide](https://www.twilio.com/docs/api/notifications/guides/configuring-ios-push-notifications).
 
 ## Set up Twilio Functions
 
 The sample mobile app is already set up to communicate with Twilio Functions to register a device for notifications. You just need to create two Functions in your account from a template, and then specify the URL for one of those Twilio Functions in the source code to the app.
 
-To get started with this, create a new Twilio Function on the [Twilio Console's Manage Functions page](/console/runtime/functions/manage). Choose the Twilio Notify Quickstart template from the list of templates.
+To get started with this, create a new Twilio Function on the [Twilio Console's Manage Functions page](https://www.twilio.com/console/runtime/functions/manage). Choose the Twilio Notify Quickstart template from the list of templates.
 Use the Notify service SID you collected in the previous section for the only required configuration parameter for the template.
 
 ## Configure the Mobile App
