@@ -1,41 +1,44 @@
 # Twilio Notify Quickstart for Swift
 
 This application should give you a ready-made starting point for writing your
-own notification-integrated apps with Twilio Notify. Before we begin, you will need to set up a web application that communicates with your mobile app
+own notification-integrated apps with Twilio Notify. 
 
-## Download a Twilio SDK Starter Server project
+## Gather account information
 
-Luckily, we have built server applications for many languages:
+We need to get the necessary information from our Twilio account. Here's what we'll need:
 
-| Language  | GitHub Repo |
-| :-------------  |:------------- |
-PHP | [sdk-starter-php](https://github.com/TwilioDevEd/sdk-starter-php/)
-Ruby | [sdk-starter-ruby](https://github.com/TwilioDevEd/sdk-starter-ruby/)
-Python | [sdk-starter-python](https://github.com/TwilioDevEd/sdk-starter-python/)
-Node.js | [sdk-starter-node](https://github.com/TwilioDevEd/sdk-starter-node/)
-Java | [sdk-starter-java](https://github.com/TwilioDevEd/sdk-starter-java/)
+Config Value  | Description
+:-------------  |:-------------
+Service Instance SID | A [service](https://www.twilio.com/docs/api/notifications/rest/services) instance where all the data for our application is stored and scoped. You can create one in the [console](https://www.twilio.com/console/notify/services).
 
-You'll only need to download one of those. Not sure which one to choose? The [Node.js](https://github.com/TwilioDevEd/sdk-starter-node/) server starter kit is pretty easy to set up and follow along with.
+You will also need to create a push credential on the Twilio Console, and then configure it on your Notify service. You can [upload your push credentials here](https://www.twilio.com/console/notify/credentials/create). If you haven't set up the Apple Push Notification Service (APNS) for your app, you can do so by following [the iOS push notification guide](https://www.twilio.com/docs/api/notifications/guides/configuring-ios-push-notifications).
 
-Follow the directions in the README on one of the above servers, and get the web client up and running to make sure you have everything configured right for the demos you are interested in.  
+## Set up Twilio Functions
 
-##Please Note
-You'll need to test this on the device, since the iOS simulator can't receive notifications. To test on a device, your server will need to be on the public Internet. For this, you might consider using a solution like [ngrok](https://ngrok.com/).
+The sample mobile app is already set up to communicate with Twilio Functions to register a device for notifications. You just need to create two Functions in your account from a template, and then specify the URL for one of those Twilio Functions in the source code to the app.
+
+To get started with this, create a new Twilio Function on the [Twilio Console's Manage Functions page](https://www.twilio.com/console/runtime/functions/manage). Choose the Twilio Notify Quickstart template from the list of templates.
+Use the Notify service SID you collected in the previous section for the only required configuration parameter for the template.
+
+## Configure the Mobile App
+
+You'll have a subdomain associated with your Twilio account - each account has a different one.
 
 In the ViewController.swift file, on this line,
 
-    var serverURL : String = "http://YOUR_SERVER_HERE/register"
+    var serverURL = "https://YOUR_DOMAIN_HERE.twil.io"
+    
+Change the serverURL to match your Twilio Functions subdomain, then compile and run the app on an actual device - Apple's push notification service does not work on the Simulator. Enter an identity in the text field that's presented. 
 
-Replace the URL with the address of your server. The app uses 4 credentials to register your device for notifications.
+Note that user identities for Notify should not be Personally Identifiable Information (PII), such as names. 
 
-Credential | Description
----------- | -----------
-Identity | This is how the web app identifies an individual user as the receiver of notifications.
-Endpoint | This is a unique device ID and identity combination that can receive a message. (i.e Alice on her iPad is a different notification destination than Alice on her iPhone).
-Bindingtype | This lets the web app know which service to register with (APNS or GCM).
-Address | This is the unique device identifier of the mobile client.
+Once you tap register, the app will register your device with your Notify service and return a JSON response object to the app if successful. 
 
-Once you've entered your URL, you can compile and run the app. Enter an identity in the text field that's presented. Once you tap register, the app will register your device with APNS and return a JSON response object if successful. After that, visit the Notify page on your server web application, and send a notification to the identity you registered as to receive a push notification in your app.
+After that, send a notification to the identity you registered so that you will receive a push notification in your app. 
+
+You can call the Twilio Function directly with an identity parameter and a body parameter, like this:
+
+    https://sturdy-concrete-1657.twil.io/send-notification?identity=user1&body=Hello
 
 That's it!
 
